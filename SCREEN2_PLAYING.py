@@ -667,7 +667,7 @@ def playing3() :
     gacha_10_times = photo("gacha10times.gif")
     popup_creepoops = photo("CREEPOOP.gif")
     popup_illuminashiets = photo('illuminashiet.gif')
-
+    back = photo("goback.gif")
 
     gacha = turtle.Turtle()
     gacha.shape(gacha_photo) 
@@ -683,6 +683,10 @@ def playing3() :
 
     popup_creepoop = turtle.Turtle()
     popup_illuminashiet = turtle.Turtle()
+
+    goback = turtle.Turtle()
+    goback.shape(back)
+    tophoto(goback,-490,270)
             
     def spin1(x,y):
         global gacha_coin
@@ -772,7 +776,12 @@ def playing3() :
             chop_level = chop_level + 0.02
 
         parameter(clicks,the_evolve,the_upgrade,the_cost,the_dream,the_level,the_evolving,the_prestige,the_prestige_prize,the_coin,the_damage,the_coin_cost,the_hp,the_coin_percentage,the_damage_cost,the_hp_cost,the_star,the_enemy_hp,the_enemy_at,gacha_coin,creepooper_level,illuminashiet_level,speed_level,chop_level)
+    def gobacks(a,b):
+        wn2.clear()
+        # playing2()
+        playingscreen1()
 
+    goback.onclick(gobacks)
     gacha_10_time.onclick(spin2)
     gacha_1_time.onclick(spin1)
     wn2.mainloop()

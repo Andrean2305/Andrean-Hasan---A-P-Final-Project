@@ -22,7 +22,7 @@ creepooper_level= 59
 illuminashiet_level= 126
 speed_level= 2.4499999999999917
 chop_level= 1.2000000000000002
-wood= 191
+wood= 196
 
 #This is the default[if you want to do a new game]
 #clicks = 0 

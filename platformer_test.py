@@ -35,6 +35,10 @@ tree_img = pygame.image.load('tree.png')
 hellow_img = pygame.image.load('hellow.png')
 chop_tree_img = pygame.image.load('clicktree.png')
 plus1_img = pygame.image.load('plus1.png')
+back_img = pygame.image.load('back.png')
+back_rect = back_img.get_rect()
+back_rect.x = 1200
+back_rect.y = 20
 tree_now = pygame.transform.scale(tree_img, (441/1.5, 593/1.5))
 
 #Shoutout Tech With Tim, i watched his video to understand how to make the platformer game.
@@ -150,6 +154,7 @@ while run:
     screen.blit(tree_now,(850,100))
     screen.blit(hellow_img,(250,50))
     screen.blit(chop_tree_img,(650,300))
+    screen.blit(back_img,(1200,20))
     world.draw()
 
     dx = 0
@@ -161,12 +166,12 @@ while run:
 
     keys = pygame.key.get_pressed()
 
-    if keys[pygame.K_LEFT] and poop.x > poop.vel:
+    if (keys[pygame.K_LEFT] or keys[pygame.K_a]) and poop.x > poop.vel:
         dx -= (poop.vel + 0.7 + speed_level)
         poop.left = True
         poop.right = False
 
-    elif keys[pygame.K_RIGHT] and poop.x < screen_width - poop.width - poop.vel:
+    elif (keys[pygame.K_RIGHT] or keys[pygame.K_d]) and poop.x < screen_width - poop.width - poop.vel:
         dx += (poop.vel +0.2 +speed_level)
         poop.right = True
         poop.left = False
@@ -184,13 +189,13 @@ while run:
         #     y += vel
 
 
-    if keys[pygame.K_SPACE] and poop.jump == False:
+    if (keys[pygame.K_SPACE] or keys[pygame.K_w]) and poop.jump == False:
         poop.vel_y = -10
         poop.jump = True
         noob_effect = effect("jump.wav")
         noob_effect.play()
 
-    if keys[pygame.K_SPACE] == False:
+    if (keys[pygame.K_SPACE] or keys[pygame.K_w]) == False:
         poop.jump = False
         
     
@@ -267,6 +272,11 @@ while run:
             axe_effect.play()
             poop.chop = True
             parameter(clicks,the_evolve,the_upgrade,the_cost,the_dream,the_level,the_evolving,the_prestige,the_prestige_prize,the_coin,the_damage,the_coin_cost,the_hp,the_coin_percentage,the_damage_cost,the_hp_cost,the_star,the_enemy_hp,the_enemy_at,gacha_coin,creepooper_level,illuminashiet_level,speed_level,chop_level,wood)
+
+        if back_rect.collidepoint(event.pos) :
+           pygame.quit()
+           import poop
+
 
 
     pygame.draw.rect(screen, (255, 255, 255), tile[1], 2)
