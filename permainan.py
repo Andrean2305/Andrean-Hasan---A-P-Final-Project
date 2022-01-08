@@ -1,12 +1,28 @@
-clicks= 104
-the_evolve= 98.74109999999999
-the_upgrade= 6
-the_cost= 50
-the_dream= 1
-the_level= 111
-the_evolving= 64.36342999999998
-the_prestige= 167
-the_prestige_prize= 293.32400000000075
+clicks= 80162833522.99933
+the_evolve= 125782309448.95984
+the_upgrade= 4452192774.189049
+the_cost= 137.2
+the_dream= 317847091.46657157
+the_level= 114
+the_evolving= 163517002219.64777
+the_prestige= 324
+the_prestige_prize= 682.4529999999985
+the_coin= 374.2599999992412
+the_damage= 1711111111111.3364
+the_hp= 518317.0022801438
+the_coin_cost= 4878.39905625289
+the_coin_percentage= 1.9000000000000015
+the_damage_cost= 1550
+the_hp_cost= 5800
+the_star= 123274.40128249879
+the_enemy_hp= 95367431640625
+the_enemy_at= 4593.707603262783
+gacha_coin= 4048
+creepooper_level= 59
+illuminashiet_level= 126
+speed_level= 2.4499999999999917
+chop_level= 1.2000000000000002
+wood= 191
 
 #This is the default[if you want to do a new game]
 #clicks = 0 
