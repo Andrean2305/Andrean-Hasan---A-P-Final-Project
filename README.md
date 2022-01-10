@@ -7,9 +7,11 @@ Music and sound are from the internet, also i'm so sorry that i forgot to write 
 
 Please play the poop.py to open the home screen of my program
 
+For all of the 3 screen file https://github.com/Andrean2305/Andrean-Hasan---A-P-Final-Project/blob/main/SCREEN2_PLAYING.py
+
 platformer_test.py  = the platformer idle game (if you want to play just the platformer idle game)
 
-FIGHT.py = battle.screen https://github.com/Andrean2305/Andrean-Hasan---A-P-Final-Project/blob/main/FIGHT.py
+FIGHT.py = JUST TO CALL battle.screen   https://github.com/Andrean2305/Andrean-Hasan---A-P-Final-Project/blob/main/FIGHT.py
 
 gachakuy.py = gacha screen
 
