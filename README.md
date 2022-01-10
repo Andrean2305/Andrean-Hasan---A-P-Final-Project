@@ -9,7 +9,7 @@ Please play the poop.py to open the home screen of my program
 
 For all of the 3 screen file https://github.com/Andrean2305/Andrean-Hasan---A-P-Final-Project/blob/main/SCREEN2_PLAYING.py
 
-platformer_test.py  = the platformer idle game (if you want to play just the platformer idle game)
+platformer_test.py  = the platformer idle game https://github.com/Andrean2305/Andrean-Hasan---A-P-Final-Project/blob/main/platformer_test.py
 
 poop.py = JUST TO CALL THE MAIN SCREEN https://github.com/Andrean2305/Andrean-Hasan---A-P-Final-Project/blob/main/poop.py
 
