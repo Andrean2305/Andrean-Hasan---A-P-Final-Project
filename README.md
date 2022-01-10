@@ -15,3 +15,6 @@ Work time for the project : 272 hours , 27 minutes (including the video)
 
 https://github.com/Andrean2305/Andrean-Hasan---A-P-Final-Project/blob/main/flowchart.zip [flow chart]
 This is for the report and the flowchart. For the flow chart please use the drawio file and open it in https://app.diagrams.net/
+
+
+https://www.youtube.com/channel/UC-sOanxtnW2G7Hb0UM6OwDA [VIDEO OF THE PROGRAM]
