@@ -15,7 +15,7 @@ poop.py = JUST TO CALL THE MAIN SCREEN https://github.com/Andrean2305/Andrean-Ha
 
 FIGHT.py = JUST TO CALL battle.screen   https://github.com/Andrean2305/Andrean-Hasan---A-P-Final-Project/blob/main/FIGHT.py
 
-gachakuy.py = gacha screen
+gachakuy.py = just to call gacha screen https://github.com/Andrean2305/Andrean-Hasan---A-P-Final-Project/blob/main/gachakuy.py
 
 Hope you like my first project.
 
