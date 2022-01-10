@@ -355,7 +355,7 @@ def playingscreen1():
             cash_effect = effect("cash.mp3")
             cash_effect.play()
             
-        if the_coin_percentage < 1 : 
+        elif the_coin_percentage < 1 : 
             if random.randint(0,100) < the_coin_percentage*100:
                 the_coin = the_coin + 1
                 the_coin_text.clear()
@@ -551,10 +551,6 @@ def playingscreen1():
             the_hp = the_hp*1.001 + 0.1
             the_coin = the_coin - the_hp_cost
             the_hp_cost = the_hp_cost + 10
-
-            # the_damage = the_damage*1.001 + 0.1
-            # the_coin = the_coin - the_damage_cost
-            # the_damage_cost = the_damage_cost + 10
 
             hp_effect = effect("hp.mp3")
             hp_effect.play()
