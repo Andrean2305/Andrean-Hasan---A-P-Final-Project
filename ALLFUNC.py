@@ -36,7 +36,7 @@ def towrite(a,b,c,d,e,f,g,h = ""):  #To write something
         a.write(e,align = "center", font = ("Apple II ALT PRO",f,"bold"))
 
 # parameter(clicks,the_evolve,the_upgrade,the_cost,the_dream,the_level,the_evolving,the_prestige,the_prestige_prize,the_coin,the_damage,the_coin_cost,the_hp,the_coin_percentage,the_damage_cost,the_hp_cost,the_star,the_enemy_hp,the_enemy_at,gacha_coin,creepooper_level,illuminashiet_level)
-def parameter(a ,b ,c ,d ,e ,f ,g ,h ,i ,j ,k ,l ,m ,n ,o ,p ,q ,r = the_enemy_hp,s = the_enemy_at,t = gacha_coin,u = creepooper_level,v = illuminashiet_level,w = speed_level,x = chop_level,y= wood):
+def parameter(a ,b ,c ,d ,e ,f ,g ,h ,i ,j ,k ,l ,m ,n ,o ,p ,q ,r = the_enemy_hp,s = the_enemy_at,t = gacha_coin,u = creepooper_level,v = illuminashiet_level,w = speed_level,x = chop_level,y= wood,z = stone):
     save = open("permainan.py","w")
     save.write("clicks= " + str(a) + '\n')
     save.write("the_evolve= " +str(b) + '\n')
@@ -63,6 +63,7 @@ def parameter(a ,b ,c ,d ,e ,f ,g ,h ,i ,j ,k ,l ,m ,n ,o ,p ,q ,r = the_enemy_h
     save.write("speed_level= "+ str(w) + '\n')
     save.write("chop_level= "+ str(x) + '\n')
     save.write("wood= "+ str(y) + '\n')
+    save.write("stone= "+ str(z) + '\n')
     save.write('\n'+ '#This is the default[if you want to do a new game]' +'\n' +'#clicks = 0 ' + '\n' + '#the_evolve = 50' + '\n' + '#the_upgrade = 1' + '\n' + '#the_cost = 50' + '\n' + '#the_dream = 1 ' + '\n' + '#the_level = 1 ' + '\n' + '#the_evolving = 50'+'\n' + '#the_prestige = 1')
 
 def test1(xa,a,b,baba,babas ,c = "gachapull.mp3",d = 5000) :
@@ -82,25 +83,19 @@ def test1(xa,a,b,baba,babas ,c = "gachapull.mp3",d = 5000) :
 
         a.onclick(closesong_illuminashiet)   
 
-# def test10(xa,a,b,baba,babas ,c = "gachapull.mp3",d = 5000) :
-#     if baba <= xa <= babas :
-#         a = turtle.Turtle()
-#         a.shape(b)
+def fade(width, height): 
+    screen = pygame.display.set_mode((1300, 650))
+    fade = pygame.Surface((width, height))
+    fade.fill((0,0,0))
+    for alpha in range(0, 300):
+        fade.set_alpha(alpha)
+        redrawWindow()
+        screen.blit(fade, (0,0))
+        pygame.display.update()
+        pygame.time.delay(0)
 
-#         pygame.mixer.music.pause()
-#         minang_effect = effect(c)
-#         minang_effect.play()
-#         minang_effect.fadeout(d)
-#         xaaa = 0
-#         xaaa = xaaa+1
-#         def closesong_illuminashiet(x,y):
-#             pygame.mixer.stop()
-#             pygame.mixer.music.unpause()
-#             a.hideturtle()
-#             xa = random.randint(0,100)
-
-#             while xaaa < 10 :
-#                 test10(xa,popup_creepoop,popup_creepoops,0,30) 
-#                 test10(xa,popup_illuminashiet,popup_illuminashiets,31,100) 
-
-#         a.onclick(closesong_illuminashiet)  
+def redrawWindow():
+    loading_img = pygame.image.load('loading.png')
+    screen = pygame.display.set_mode((1300, 650))
+    screen.fill((255,255,255))
+    screen.blit(loading_img,(300,75))

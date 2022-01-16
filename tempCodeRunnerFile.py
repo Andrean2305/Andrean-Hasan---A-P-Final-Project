@@ -1,1 +1,1 @@
-441/1.5, 593/1.5
+img = pygame.transform.scale(left_img, (tile_size, tile_size))
