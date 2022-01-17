@@ -21,7 +21,7 @@ gachakuy.py = just to call gacha screen https://github.com/Andrean2305/Andrean-H
 
 Hope you like my first project.
 
-Work time for the project : 272 hours , 27 minutes (including the video)
+Work time for the project : 272 hours , 27 minutes (including the video) + 15 hours (Actually not 400 hours sir sorry i forgot)
 
 
 https://github.com/Andrean2305/Andrean-Hasan---A-P-Final-Project/blob/main/flowchart.zip [the repo of the flow chart file]
