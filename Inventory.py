@@ -137,7 +137,7 @@ def inventorys():
                 run = False
         
         if creepoop.muncul == True and illu.muncul == False :
-            creepoop.tulisan(42,black,creepooper_level,creepooper_level*0.02,creepooper_level*0.04,"Creepooper")
+            creepoop.tulisan(42,black,creepooper_level,round(creepooper_level*0.02,2),round(creepooper_level*0.04,2),"Creepooper")
             creepoop.countdowns += 5
             pygame.draw.rect(screen,(255,0,0),creepooper_img1_rect,2)
 

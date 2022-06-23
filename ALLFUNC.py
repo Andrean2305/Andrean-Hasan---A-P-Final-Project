@@ -1,11 +1,11 @@
 import turtle #turtle module just to make background and importing image
-import os
 import pygame
-import random
 
 from permainan import * #importing game progress
 from tkinter import *
 from pygame import *
+
+from MAP3_COLLIDER import *
 
 def lagu(a):    #For making the music background
     music = (f'C:/Users/Asus/FinalProjectsirJude/{a}')
@@ -35,8 +35,8 @@ def towrite(a,b,c,d,e,f,g,h = ""):  #To write something
     if g == 1 :
         a.write(e,align = "center", font = ("Apple II ALT PRO",f,"bold"))
 
-# parameter(clicks,the_evolve,the_upgrade,the_cost,the_dream,the_level,the_evolving,the_prestige,the_prestige_prize,the_coin,the_damage,the_coin_cost,the_hp,the_coin_percentage,the_damage_cost,the_hp_cost,the_star,the_enemy_hp,the_enemy_at,gacha_coin,creepooper_level,illuminashiet_level)
-def parameter(a ,b ,c ,d ,e ,f ,g ,h ,i ,j ,k ,l ,m ,n ,o ,p ,q ,r = the_enemy_hp,s = the_enemy_at,t = gacha_coin,u = creepooper_level,v = illuminashiet_level,w = speed_level,x = chop_level,y= wood,z = stone):
+# parameter(clicks,the_evolve,the_upgrade,the_cost,the_dream,the_level,the_evolving,the_prestige,the_prestige_prize,the_coin,the_damage,the_coin_cost,the_hp,the_coin_percentage,the_damage_cost,the_hp_cost,the_star,the_enemy_hp,the_enemy_at,gacha_coin,creepooper_level,illuminashiet_level,speed_level,chop_level,wood,stone,nft_coin,waktu)
+def parameter(a ,b ,c ,d ,e ,f ,g ,h ,i ,j ,k ,l ,m ,n ,o ,p ,q ,r = the_enemy_hp,s = the_enemy_at,t = gacha_coin,u = creepooper_level,v = illuminashiet_level,w = speed_level,x = chop_level,y= wood,z = stone, aa = nft_coin, ab = waktu,ac = tahun , ad = bulan):
     save = open("permainan.py","w")
     save.write("clicks= " + str(a) + '\n')
     save.write("the_evolve= " +str(b) + '\n')
@@ -64,6 +64,10 @@ def parameter(a ,b ,c ,d ,e ,f ,g ,h ,i ,j ,k ,l ,m ,n ,o ,p ,q ,r = the_enemy_h
     save.write("chop_level= "+ str(x) + '\n')
     save.write("wood= "+ str(y) + '\n')
     save.write("stone= "+ str(z) + '\n')
+    save.write("nft_coin= "+ str(aa) + '\n')
+    save.write("waktu= "+ str(ab) + '\n')
+    save.write("tahun= "+ str(ac) + '\n')
+    save.write("bulan= "+ str(ad) + '\n')
     save.write('\n'+ '#This is the default[if you want to do a new game]' +'\n' +'#clicks = 0 ' + '\n' + '#the_evolve = 50' + '\n' + '#the_upgrade = 1' + '\n' + '#the_cost = 50' + '\n' + '#the_dream = 1 ' + '\n' + '#the_level = 1 ' + '\n' + '#the_evolving = 50'+'\n' + '#the_prestige = 1')
 
 def test1(xa,a,b,baba,babas ,c = "gachapull.mp3",d = 5000) :

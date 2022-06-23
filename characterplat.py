@@ -4,76 +4,55 @@ import os
 from permainan import * #importing game progress
 from tkinter import *
 from ALLFUNC import *
-from SCREEN2_PLAYING import *
+from ALLANIMATION import *
 
 os.chdir('C:/Users/Asus/FinalProjectSirJude')
 from pygame.locals import *
 
-right1 = pygame.image.load('mrpoopyz.png')
-right2 = pygame.image.load('mrpoopyz2.png')
-right3 = pygame.image.load('mrpoopyz3.png')
-
-left1 = pygame.transform.flip(right1, True, False)
-left2 = pygame.transform.flip(right2, True, False)
-left3 = pygame.transform.flip(right3, True, False)
-
-walk_now = pygame.image.load('mrpoopyz.png')
-
-walk_left = [left1,left1,left1,left2,left2,left2,left3,left3,left3]
-walk_right = [right1,right1,right1,right2,right2,right2,right3,right3,right3]
-
-ba1 = pygame.image.load('bat1.png')
-ba2 = pygame.image.load('bat2.png')
-ba3 = pygame.image.load('bat3.png')
-ba4 = pygame.image.load('bat4.png')
-
-bat1 = pygame.transform.scale(ba1, (100,100))
-bat2 = pygame.transform.scale(ba2, (100,100))
-bat3 = pygame.transform.scale(ba3, (100,100))
-bat4 = pygame.transform.scale(ba4, (100,100))
-
-bat11 = pygame.transform.flip(bat1, True, False)
-bat22 = pygame.transform.flip(bat2, True, False)
-bat33 = pygame.transform.flip(bat3, True, False)
-bat44 = pygame.transform.flip(bat4, True, False)
-
-bat_now1 = pygame.image.load('bat.png')
-bat_now = pygame.transform.scale(bat_now1, (100,100))
-
-bat_left = [bat1,bat1,bat2,bat2,bat3,bat3,bat4,bat4,bat4]
-bat_right = [bat11,bat11,bat22,bat22,bat33,bat33,bat44,bat44,bat44]
-sleep1_img = pygame.image.load('bat_sleep.png')
-sleep_img = pygame.transform.scale(sleep1_img, (25, 25))
-
-white = (255, 255, 255)
-green = (0, 255, 0)
-blue = (0, 0, 128)
-black = (16,16,16)
 
 class character():
     def __init__(self,x,y,width,heigth):
         self.x = x
         self.y = y
+
         self.width = width
         self.heigth = heigth
+
         self.vel = 0.7
         self.jump = False
         self.jumpcount = 5
         self.left = False
         self.right = False
         self.walkcount = 0
+        self.walkbat = 0
+
+        self.time = False
 
         self.trade = False
         self.trade_wait = False
+
         self.chop = False
         self.choppin = False
         self.length = 0
+
         self.stone_animation = False
         self.animation_length = 0 
         self.vel_y = 0
         self.barumuncul = False
 
+        self.burn = False
+        self.burn_count = 0
+        self.marah = 0
+
         self.house = False
+
+        self.atas = False
+        self.bawah = False
+        self.kiri = False
+        self.kanan = False
+        self.plusx = 0
+        self.plusy = 0
+        self.hitung_jalan = 0
 
         self.image = walk_now
         self.rect = self.image.get_rect()
@@ -82,43 +61,93 @@ class character():
         self.rect.width = 33
         self.rect.height = 45
 
+        self.rect1 = self.image.get_rect()
+        self.rect1.x = x + 9
+        self.rect1.y = y + 60
+        self.rect1.width = 28
+        self.rect1.height = 15
+
         self.tree_hitbox = (850, 100,441/1.5, 593/1.5)
         self.map2 = False
+        self.map3 = False
+
+        self.news = True
         
     def draw(self,screen):
-        if self.walkcount + 1 >= 27:
-            self.walkcount = 0
-
-        if self.left :
-            screen.blit(walk_left[self.walkcount//3],(self.x,self.y))
-            if self.map2 and 190 < self.x < 661 and 439 < self.y:
-             screen.blit(bat_left[self.walkcount//3],(self.x,self.y -25))
-            if self.map2 == True and ((self.x < 190 and self.y < 426) or (self.x > 661 and self.y < 526) or (190 < self.x < 661 and self.y < 426)) :
-                screen.blit(sleep_img,(22*25,18*25))
-
-            self.walkcount += 1
+        if self.map3 == False :
+            if self.walkcount + 1 >= 27:
+                self.walkcount = 0
             
+            if self.burn_count + 1 >= 69:
+                self.burn_count = 0
 
-        elif self.right :
-            screen.blit(walk_right[self.walkcount//3], (self.x,self.y))
-            if self.map2 and 190 < self.x < 661 and 439 < self.y:
-                screen.blit(bat_right[self.walkcount//3], (self.x,self.y -25))
-            if self.map2 == True and ((self.x < 190 and self.y < 426) or (self.x > 661 and self.y < 526) or (190 < self.x < 661 and self.y < 426)) :
-                screen.blit(sleep_img,(22*25,18*25))
- 
+            if self.marah + 1 >= 36:
+                self.marah = 0
+        
+            if self.walkbat +1 >= 27 :
+                self.walkbat = 0
+
+            if self.map2 :
+                if self.right  and 190 < self.x < 661 and 439 < self.y:
+                    screen.blit(bat_right[self.walkbat//3], (self.x,self.y -25))
+                    self.walkbat += 1
+                elif self.left  and 190 < self.x < 661 and 439 < self.y:
+                    screen.blit(bat_left[self.walkbat//3], (self.x,self.y -25))
+                    self.walkbat += 1
+                elif ((self.x < 190 and self.y < 426) or (self.x > 661 and self.y < 526) or (190 < self.x < 661 and self.y < 426)) :
+                    screen.blit(sleep_img,(22*25,18*25))
+                else :
+                    screen.blit(bat_now,(self.x,self.y -25))
+
+            if self.left and self.burn == False:
+                screen.blit(walk_left[self.walkcount//3],(self.x,self.y))
+                self.walkcount += 1
+                
+            elif self.left and self.burn :
+                screen.blit(tbl_left[self.marah//3],(self.x,self.y))
+                self.marah += 1
+
+            elif self.right and self.burn :
+                screen.blit(tbl[self.marah//3],(self.x,self.y))
+                self.marah += 1
+
+            elif self.right and self.burn == False:
+                screen.blit(walk_right[self.walkcount//3], (self.x,self.y))
+    
+                self.walkcount += 1
+            
+            elif self.right == False and self.left == False and self.burn == False:
+                screen.blit(walk_now, (self.x,self.y))
+
+            else :
+                screen.blit(tbl[self.marah//3],(self.x,self.y))
+                self.marah += 1
+
+            if self.burn and self.left == False :
+                screen.blit(hinokami_kagura[self.burn_count//3], (self.x+35,self.y+32))
+                self.burn_count += 1
+            
+            elif self.burn and self.left :
+                screen.blit(hinokami_kagura_left[self.burn_count//3], (self.x-35,self.y+32))
+                self.burn_count += 1
+            
+            elif self.burn : 
+                screen.blit(hinokami_kagura_left[self.burn_count//3], (self.x-35,self.y+32))
+                self.burn_count += 1
+
+        elif self.map3 == True:
+            if self.walkcount + 1 >= 54:
+                self.walkcount = 0
+
+            screen.blit(bounch[self.walkcount//3],(self.x,self.y))
             self.walkcount += 1
-           
-        else:
-            screen.blit(walk_now, (self.x,self.y))
-            if self.map2 and 190 < self.x < 661 and 439 < self.y :
-                screen.blit(bat_now, (self.x,self.y -25))
-            if self.map2 == True and ((self.x < 190 and self.y < 426) or (self.x > 661 and self.y < 526) or (190 < self.x < 661 and self.y < 426)) :
-                screen.blit(sleep_img,(22*25,18*25))
 
-        # self.hitbox = (self.x + 15.5, self.y,36,60)
         self.rect.x = self.x + 15.5
         self.rect.y = self.y + 15
-        # pygame.draw.rect(screen, (255, 255, 255), self.tree_hitbox, 2)
+
+        self.rect1.x = self.x + 9
+        self.rect1.y = self.y + 60
+
 poop = character(6,415,64,64) 
 
 # screen = pygame.display.set_mode((1300, 650))
@@ -161,4 +190,143 @@ class inventory():
             self.screen.blit(text2, textRect2)
             self.screen.blit(text3, textRect3)
             self.screen.blit(text, textRect)
-    
+
+tile_size = 25
+# screen_width = 1300
+# screen_height = 650
+
+# screen = pygame.display.set_mode((screen_width, screen_height))
+class World1():
+
+        def __init__(self, data):
+            self.tile_list = []
+            self.back_list = []
+            self.screen_width = 1300
+            self.screen_height = 650
+
+            self.screen = pygame.display.set_mode((self.screen_width, self.screen_height))
+            #load images
+            dirt_img = pygame.image.load('dirt.png')
+            grass_img = pygame.image.load('grass.png')
+            platform_img = pygame.image.load('platform.png')
+            grass1_img = pygame.image.load('grass1.png')
+            grass2_img = pygame.image.load('grass-left.png')
+            grass3_img = pygame.image.load('grass-right.png')
+            flowers_img = pygame.image.load('flowers.png')
+            side_only_img = pygame.image.load('side_only.png')
+            down_only_img = pygame.image.load('down_only.png')
+            right_down_img = pygame.image.load('right_down.png')
+            left_down_img = pygame.image.load('left_down.png')
+            left_img = pygame.image.load('left.png')
+            sleep_img = pygame.image.load('bat_sleep.png')
+            background_img = pygame.image.load('background.png')
+
+            row_count = 0
+            for row in data:
+                col_count = 0
+                for tile in row:
+                    if tile == 1:
+                        img = pygame.transform.scale(dirt_img, (tile_size, tile_size))
+                        img_rect = img.get_rect()
+                        img_rect.x = col_count * tile_size
+                        img_rect.y = row_count * tile_size
+                        tile = (img, img_rect,2)
+                        self.tile_list.append(tile)
+                    if tile == 2:
+                        img = pygame.transform.scale(grass_img, (tile_size, tile_size))
+                        img_rect = img.get_rect()
+                        img_rect.x = col_count * tile_size
+                        img_rect.y = row_count * tile_size
+                        tile = (img, img_rect,2)
+                        self.tile_list.append(tile)
+                    if tile == 5:
+                        img = pygame.transform.scale(grass2_img, (tile_size, tile_size))
+                        img_rect = img.get_rect()
+                        img_rect.x = col_count * tile_size
+                        img_rect.y = row_count * tile_size
+                        tile = (img, img_rect,2)   
+                        self.tile_list.append(tile)
+                    if tile == 6:
+                        img = pygame.transform.scale(grass3_img, (tile_size, tile_size))
+                        img_rect = img.get_rect()
+                        img_rect.x = col_count * tile_size
+                        img_rect.y = row_count * tile_size
+                        tile = (img, img_rect,2)   
+                        self.tile_list.append(tile)
+                    if tile == 7:
+                        img = pygame.transform.scale(flowers_img, (tile_size, tile_size))
+                        img_rect = img.get_rect()
+                        img_rect.x = col_count * tile_size
+                        img_rect.y = row_count * tile_size
+                        tile = (img, img_rect,0)   
+                        self.tile_list.append(tile)
+                    if tile == 3:
+                        img = pygame.transform.scale(platform_img, (tile_size, tile_size))
+                        img_rect = img.get_rect()
+                        img_rect.x = col_count * tile_size
+                        img_rect.y = row_count * tile_size
+                        tile = (img, img_rect,1,img_rect.y,img_rect.x)    #1 = for platform
+                        self.tile_list.append(tile)
+                    if tile == 4:
+                        img = pygame.transform.scale(grass1_img, (tile_size, tile_size))
+                        img_rect = img.get_rect()
+                        img_rect.x = col_count * tile_size
+                        img_rect.y = row_count * tile_size
+                        tile = (img, img_rect,0)    #0 = no collider/furniture/background
+                        self.tile_list.append(tile)
+                    if tile == 8:
+                        img = pygame.transform.scale(side_only_img, (tile_size, tile_size))
+                        img_rect = img.get_rect()
+                        img_rect.x = col_count * tile_size
+                        img_rect.y = row_count * tile_size
+                        tile = (img, img_rect,2)
+                        self.tile_list.append(tile)
+                    if tile == 9:
+                        img = pygame.transform.scale(down_only_img, (tile_size, tile_size))
+                        img_rect = img.get_rect()
+                        img_rect.x = col_count * tile_size
+                        img_rect.y = row_count * tile_size
+                        tile = (img, img_rect,2)
+                        self.tile_list.append(tile)
+                    if tile == 10:
+                        img = pygame.transform.scale(right_down_img, (tile_size, tile_size))
+                        img_rect = img.get_rect()
+                        img_rect.x = col_count * tile_size
+                        img_rect.y = row_count * tile_size
+                        tile = (img, img_rect,2)
+                        self.tile_list.append(tile)
+                    if tile == 11:
+                        img = pygame.transform.scale(left_down_img, (tile_size, tile_size))
+                        img_rect = img.get_rect()
+                        img_rect.x = col_count * tile_size
+                        img_rect.y = row_count * tile_size
+                        tile = (img, img_rect,2)
+                        self.tile_list.append(tile)
+                    if tile == 12:
+                        img = pygame.transform.scale(left_img, (tile_size, tile_size))
+                        img_rect = img.get_rect()
+                        img_rect.x = col_count * tile_size
+                        img_rect.y = row_count * tile_size
+                        tile = (img, img_rect,2)
+                        self.tile_list.append(tile)
+                    if tile == 13:
+                        img = pygame.transform.scale(sleep_img, (tile_size, tile_size))
+                        img_rect = img.get_rect()
+                        img_rect.x = col_count * tile_size
+                        img_rect.y = row_count * tile_size
+                        tile = (img, img_rect,0)
+                        self.tile_list.append(tile)
+                    if tile == 15:
+                        img = pygame.transform.scale(background_img, (tile_size, tile_size))
+                        img_rect = img.get_rect()
+                        img_rect.x = col_count * tile_size
+                        img_rect.y = row_count * tile_size
+                        tile = (img, img_rect,0)
+                        self.tile_list.append(tile)
+                    col_count += 1
+                row_count += 1 
+
+        def draw(self):
+            for tile in self.tile_list:
+                
+                self.screen.blit(tile[0], tile[1])

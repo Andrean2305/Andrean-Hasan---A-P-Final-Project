@@ -1,1 +1,2 @@
-img = pygame.transform.scale(left_img, (tile_size, tile_size))
+poop.rect1.x += poop.plusx
+    poop.rect1.y += poop.plusy
